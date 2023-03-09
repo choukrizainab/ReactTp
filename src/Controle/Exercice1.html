@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+const Buteurs =[{id:1,
+        player:{"player_id":19779,"player_name":"Achraf Hakimi"},
+        team:"Real Madrid",
+        goals:{"home":8,"away":1},
+    },
+    {id:2,
+    player:{"player_id":4934,"player_name":"Ziech Hakim"},
+    team:"FC chelsea",
+    goals:{"home":19,"away":4},
+    },
+    {id:3,
+    player:{"player_id":4982,"player_name":"Azzedine Ounahi"},
+    team:"OML",
+    goals:{"home":10,"away":5},
+    }
+];
+
+//Q1
+const T=Buteurs.find(buteur=>buteur.player.player_name="Achraf Hakimi").goals
+console.log(T);
+//Q2
+const p3Goals = Buteurs.filter(player => player.goals.away> 3).map(player => player.player.player_name);
+console.log(p3Goals); 
+
+//Q3
+
+const maxHomeGoals = Buteurs.reduce((max, player) => {
+  if (player.goals.home > max) {return player.goals.home; }
+  else {return max;}
+}, 0);
+console.log(maxHomeGoals); 
+
+//Q4
+
+const AwayGoals = Buteurs.reduce((total, player) =>{ return total+player.goals.away}, 0);
+console.log(AwayGoals); 
+
+//Q5
+
+const teamsWithMaxAwayGoals = Buteurs.reduce((teams, player) => {
+  if (player.goals.away > teams.max) {
+    return { max: player.goals.away, teams: [player.team] };
+  } else if (player.goals.away === teams.max) {
+    return { max: teams.max, teams: [...teams.teams, player.team] };
+  } else {
+    return teams;
+  }
+}, { max: 0, teams: [] }).teams;
+
+//Q6
+
+const Buteurs2 = [
+  ...Buteurs,
+  {
+    id: 21,
+    player: { player_id: 500, player_name: "selim amllah" },
+    team: "real",
+    goals: { home: 10, away: 4 }
+  }
+];
+
+console.log(Buteurs2);
+
+
+ 
+</script>
+    
+
+
+</body>
+</html>
+
+
